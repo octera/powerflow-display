@@ -1,6 +1,6 @@
 # powerflow-display
 
-![sample-gif](https://github.com/octera/powerflow-display/blob/master/sample.gif)
+![sample-gif](https://raw.githubusercontent.com/octera/powerflow-display/main/sample.gif)
 [](sample.gif)
 
 Aimed to display house power flow on a reduced size screen, like Raspberry PI hat, with a resolution of 480x320.
