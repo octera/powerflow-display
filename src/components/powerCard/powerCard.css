@@ -1,0 +1,158 @@
+:root {
+    --warning-color: #A60;
+    --info-color: #66F;
+    --success-color: #6F6;
+    --primary-text-color: #555;
+}
+
+#tesla-style-solar-power-card{
+    margin:auto;
+    display:table;
+    padding: 10px;
+    position: relative;
+}
+.acc_center .acc_td{
+    position:relative;
+}
+.acc_top .acc_container,
+.acc_bottom .acc_container{
+    margin:auto;
+}
+.acc_center{
+    display:flex;
+}
+.acc_center_container{
+    display:inline-flex;
+    margin: 0px auto;
+    margin-bottom:-5px;
+}
+
+.acc_left {
+    vertical-align: top;
+    z-index:5;
+    margin-top:60px;
+}
+.acc_right {
+    z-index:5;
+    margin-right:0px;
+    margin-top:60px;
+}
+
+
+.generation_entity {
+    border: 1px solid var(--warning-color) !important;
+}
+.generation_entity .acc_icon,
+.generation_entity{
+    color: var(--warning-color) !important;
+}
+.house_entity{
+    border: 1px solid var(--info-color) !important;
+}
+.appliance1_consumption_entity,
+.appliance2_consumption_entity {
+    border: 1px solid var(--info-color) !important;
+}
+.house_entity,
+.appliance1_consumption_entity,
+.appliance2_consumption_entity{
+    color: var(--info-color) !important;
+}
+#generation_to_house_entity_line,
+#generation_to_grid_entity_line,
+#generation_to_battery_entity_line{
+    stroke:var(--warning-color);
+}
+#grid_to_battery_entity_circle,
+#grid_to_house_entity_circle,
+#appliance1_consumption_entity_circle,
+#appliance2_consumption_entity_circle{
+    fill:var(--info-color);
+}
+#generation_to_house_entity_circle,
+#generation_to_grid_entity_circle,
+#generation_to_battery_entity_circle{
+    fill:var(--warning-color);
+}
+#battery_to_house_entity_line,
+#battery_to_grid_entity_line{
+    stroke:var(--success-color);
+}
+#battery_to_house_entity_circle,
+#battery_to_grid_entity_circle{
+    fill:var(--success-color);
+}
+.battery_extra_entity,
+.battery_entity{
+    border: 1px solid var(--success-color);
+    color: var(--success-color);
+}
+.battery_extra_text{
+    position:absolute;
+    top:8px;
+}
+br.clear {
+    clear:both;
+}
+.power_lines svg{
+    transform: translateZ(0);
+    display:inline-block;
+}
+
+#battery_to_house_entity_line,
+#generation_to_house_entity_line,
+#grid_to_house_entity_line,
+#generation_to_battery_entity_line,
+#grid_feed_in_entity_line,
+#generation_to_grid_entity_line,
+#battery_to_grid_entity_line,
+#grid_to_battery_entity_line,
+#appliance1_consumption_entity_line,
+#appliance2_consumption_entity_line{
+    stroke:var(--info-color);
+    fill:none;
+    stroke-width:1;
+}
+
+.acc_container {
+    height: 40px;
+    width: 40px;
+    border: 1px solid black;
+    border-radius: 100px;
+    padding: 22px;
+    color: var(--primary-text-color);
+    border-color: var(--primary-text-color);
+    position:relative;
+    cursor:pointer;
+}
+.acc_icon {
+    width: inherit;
+    text-align: center;
+    font-size: 25px
+}
+
+.acc_text,
+.acc_text_extra {
+    text-align: center;
+}
+.acc_text_extra {
+    overflow: hidden;
+    position: absolute;
+}
+.acc_td {
+    vertical-align: top;
+}
+
+.acc_center .acc_td.acc_appliance1,
+.acc_center .acc_td.acc_appliance2 {
+    position: absolute;
+    right: 10px;
+}
+
+.acc_center .acc_td.acc_appliance1 {
+    top:8px;
+}
+
+.acc_center .acc_td.acc_appliance2 {
+    bottom:8px;
+}

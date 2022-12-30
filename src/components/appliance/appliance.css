@@ -1,0 +1,12 @@
+.acc_right ,
+.acc_left ,
+.acc_line{
+    display:inline-block;
+    margin-right:-4px
+}
+
+.acc_center .acc_td.acc_appliance1,
+.acc_center .acc_td.acc_appliance2 {
+    position: absolute;
+    right: 10px;
+}
