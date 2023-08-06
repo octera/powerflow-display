@@ -10,6 +10,7 @@ import type { DocumentHead } from '@builder.io/qwik-city';
 import mqtt from "mqtt/dist/mqtt";
 import styles from './index.css?inline';
 import PowerCard, {PowerData} from "~/components/powerCard/powerCard";
+import {IClientOptions} from "mqtt";
 
 interface AppStore {
   client: NoSerialize<mqtt.MqttClient> | null
@@ -33,30 +34,34 @@ export default component$(() => {
 
   useClientEffect$(() => {
     const initMqttClient = () => {
-      store.client!.subscribe("powerinfo/grid");
-      store.client!.subscribe("powerinfo/house");
-      store.client!.subscribe("powerinfo/solar");
-      store.client!.subscribe("powerinfo/heat");
+      store.client!.subscribe(import.meta.env.VITE_MQTT_GRID_TOPIC);
+      store.client!.subscribe(import.meta.env.VITE_MQTT_HOUSE_TOPIC);
+      store.client!.subscribe(import.meta.env.VITE_MQTT_SOLAR_TOPIC);
+      store.client!.subscribe(import.meta.env.VITE_MQTT_HEAT_TOPIC);
 
+      // @ts-ignore
       store.client!.on('message', (topic, payload) => {
         switch (topic) {
-          case "powerinfo/grid":
+          case import.meta.env.VITE_MQTT_GRID_TOPIC:
             powerStore.grid=parseFloat(payload.toString());
             break;
-          case "powerinfo/house":
+          case import.meta.env.VITE_MQTT_HOUSE_TOPIC:
             powerStore.house=parseFloat(payload.toString());
             break;
-          case "powerinfo/solar":
+          case import.meta.env.VITE_MQTT_SOLAR_TOPIC:
             powerStore.solar=parseFloat(payload.toString());
             break;
-          case "powerinfo/heat":
+          case import.meta.env.VITE_MQTT_HEAT_TOPIC:
             powerStore.heat=parseFloat(payload.toString());
             break;
         }
       })
     }
 
-    const client = mqtt.connect("mqtt://192.168.0.20:9001");
+    let options:IClientOptions = {
+      username:import.meta.env.VITE_MQTT_WS_USER,
+      password:import.meta.env.VITE_MQTT_WS_PWD}
+    const client = mqtt.connect(import.meta.env.VITE_MQTT_WS_URL, options);
     client.on('connect', () => {
       console.log("connected");
       store.client = noSerialize(client);
